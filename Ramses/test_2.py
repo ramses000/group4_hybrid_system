@@ -8,6 +8,11 @@ from PIL import Image, ImageTk
 import tkinter.font
 from tkinter import filedialog
 
+import sys
+
+sys.path.append('../Jordan/Services/')
+from services import searchMessages # This code gets the method for making API request
+
 
 
 
@@ -59,6 +64,13 @@ class Widget1():
         root.withdraw()  # Remove or comment out this line to keep the window visible
         folder_selected = filedialog.askdirectory()
         root.destroy()  # Close the Tkinter window after selecting the directory
+        
+    def search_email(self):
+       
+        input = self.ltext1.get()
+        print(searchMessages(input))
+        
+             
 
 if __name__ == '__main__':
     a = Widget1(0)
