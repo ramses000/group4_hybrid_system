@@ -1,0 +1,120 @@
+/// do not modify this file! ///
+/*used uplugins start
+used uplugins end*/
+
+#include <ValueTypes/value.h>
+using namespace FlexitekMath::ValueTypes;
+
+extern "C" {
+
+fxValue __declspec(dllexport) plugin_lj_loaded();
+fxValue __declspec(dllexport) ljdevice_open(const fxValue& deviceType , const fxValue& connectionType, const fxValue& identifier);
+fxValue __declspec(dllexport) ljdevice_write(const fxValue& handle, const fxValue& names, const fxValue& values);
+fxValue __declspec(dllexport) ljdevice_read(const fxValue& handle, const fxValue& names);
+fxValue __declspec(dllexport) ljdevice_close(const fxValue& handle);
+fxValue __declspec(dllexport) ljnumber2ip(const fxValue& number);
+fxValue __declspec(dllexport) ljip2number(const fxValue& ip);
+fxValue __declspec(dllexport) ljnumber2mac(const fxValue& number);
+fxValue __declspec(dllexport) ljmac2number(const fxValue& ip);
+fxValue __declspec(dllexport) ljtcvolts2temp(const fxValue& TCType, const fxValue& TCVolts, const fxValue& CJTempK);
+fxValue __declspec(dllexport) ljhost_tick();
+fxValue __declspec(dllexport) ljdevice_info(const fxValue& handle);
+fxValue __declspec(dllexport) ljdevice_type(const fxValue& handle);
+fxValue __declspec(dllexport) ljlist_all(const fxValue& deviceType , const fxValue& connectionType);
+fxValue __declspec(dllexport) ljdevice_swrite(const fxValue& handle, const fxValue& name, const fxValue& value);
+fxValue __declspec(dllexport) ljdevice_sread(const fxValue& handle, const fxValue& name);
+fxValue __declspec(dllexport) ljdevice_awrite(const fxValue& handle, const fxValue& name, const fxValue& value);
+fxValue __declspec(dllexport) ljdevice_aread(const fxValue& handle, const fxValue& name, const fxValue& count);
+fxValue __declspec(dllexport) ljdevice_bwrite(const fxValue& handle, const fxValue& name, const fxValue& value);
+fxValue __declspec(dllexport) ljdevice_bread(const fxValue& handle, const fxValue& name, const fxValue& count, const fxValue& type);
+fxValue __declspec(dllexport) ljname2address(const fxValue& name);
+fxValue __declspec(dllexport) ljaddress2type(const fxValue& address);
+fxValue __declspec(dllexport) ljdevice_mac(const fxValue& handle, const fxValue& name);
+fxValue __declspec(dllexport) ljconstants_load(const fxValue& name);
+fxValue __declspec(dllexport) ljconfig_load(const fxValue& name);
+fxValue __declspec(dllexport) ljconfig_write(const fxValue& name, const fxValue& value);
+fxValue __declspec(dllexport) ljconfig_swrite(const fxValue& name, const fxValue& value);
+fxValue __declspec(dllexport) ljconfig_sread(const fxValue& name);
+fxValue __declspec(dllexport) ljinterval_start(const fxValue& handle, const fxValue& microseconds);
+fxValue __declspec(dllexport) ljinterval_wait(const fxValue& handle);
+fxValue __declspec(dllexport) ljinterval_clean(const fxValue& handle);
+fxValue __declspec(dllexport) ljdevice_stream_start(const fxValue& handle, const fxValue& scansPerRead, const fxValue& channelNames, const fxValue& scanRate);
+fxValue __declspec(dllexport) ljdevice_stream_read(const fxValue& handle, const fxValue& dataSize);
+fxValue __declspec(dllexport) ljdevice_stream_stop(const fxValue& handle);
+fxValue __declspec(dllexport) ljdevice_stream_burst(const fxValue& handle, const fxValue& channelNames, const fxValue& scanRate, const fxValue& numOfScans);
+fxValue __declspec(dllexport) ljdevice_last_error(const fxValue& type);
+
+fxValue __declspec(dllexport) plugin_lj_loadedName();
+fxValue __declspec(dllexport) plugin_lj_loadedDescription();
+fxValue __declspec(dllexport) ljdevice_openName();
+fxValue __declspec(dllexport) ljdevice_openDescription();
+fxValue __declspec(dllexport) ljdevice_writeName();
+fxValue __declspec(dllexport) ljdevice_writeDescription();
+fxValue __declspec(dllexport) ljdevice_readName();
+fxValue __declspec(dllexport) ljdevice_readDescription();
+fxValue __declspec(dllexport) ljdevice_closeName();
+fxValue __declspec(dllexport) ljdevice_closeDescription();
+fxValue __declspec(dllexport) ljnumber2ipName();
+fxValue __declspec(dllexport) ljnumber2ipDescription();
+fxValue __declspec(dllexport) ljip2numberName();
+fxValue __declspec(dllexport) ljip2numberDescription();
+fxValue __declspec(dllexport) ljnumber2macName();
+fxValue __declspec(dllexport) ljnumber2macDescription();
+fxValue __declspec(dllexport) ljmac2numberName();
+fxValue __declspec(dllexport) ljmac2numberDescription();
+fxValue __declspec(dllexport) ljtcvolts2tempName();
+fxValue __declspec(dllexport) ljtcvolts2tempDescription();
+fxValue __declspec(dllexport) ljhost_tickName();
+fxValue __declspec(dllexport) ljhost_tickDescription();
+fxValue __declspec(dllexport) ljdevice_infoName();
+fxValue __declspec(dllexport) ljdevice_infoDescription();
+fxValue __declspec(dllexport) ljdevice_typeName();
+fxValue __declspec(dllexport) ljdevice_typeDescription();
+fxValue __declspec(dllexport) ljlist_allName();
+fxValue __declspec(dllexport) ljlist_allDescription();
+fxValue __declspec(dllexport) ljdevice_swriteName();
+fxValue __declspec(dllexport) ljdevice_swriteDescription();
+fxValue __declspec(dllexport) ljdevice_sreadName();
+fxValue __declspec(dllexport) ljdevice_sreadDescription();
+fxValue __declspec(dllexport) ljdevice_awriteName();
+fxValue __declspec(dllexport) ljdevice_awriteDescription();
+fxValue __declspec(dllexport) ljdevice_areadName();
+fxValue __declspec(dllexport) ljdevice_areadDescription();
+fxValue __declspec(dllexport) ljdevice_bwriteName();
+fxValue __declspec(dllexport) ljdevice_bwriteDescription();
+fxValue __declspec(dllexport) ljdevice_breadName();
+fxValue __declspec(dllexport) ljdevice_breadDescription();
+fxValue __declspec(dllexport) ljname2addressName();
+fxValue __declspec(dllexport) ljname2addressDescription();
+fxValue __declspec(dllexport) ljaddress2typeName();
+fxValue __declspec(dllexport) ljaddress2typeDescription();
+fxValue __declspec(dllexport) ljdevice_macName();
+fxValue __declspec(dllexport) ljdevice_macDescription();
+fxValue __declspec(dllexport) ljconstants_loadName();
+fxValue __declspec(dllexport) ljconstants_loadDescription();
+fxValue __declspec(dllexport) ljconfig_loadName();
+fxValue __declspec(dllexport) ljconfig_loadDescription();
+fxValue __declspec(dllexport) ljconfig_writeName();
+fxValue __declspec(dllexport) ljconfig_writeDescription();
+fxValue __declspec(dllexport) ljconfig_swriteName();
+fxValue __declspec(dllexport) ljconfig_swriteDescription();
+fxValue __declspec(dllexport) ljconfig_sreadName();
+fxValue __declspec(dllexport) ljconfig_sreadDescription();
+fxValue __declspec(dllexport) ljinterval_startName();
+fxValue __declspec(dllexport) ljinterval_startDescription();
+fxValue __declspec(dllexport) ljinterval_waitName();
+fxValue __declspec(dllexport) ljinterval_waitDescription();
+fxValue __declspec(dllexport) ljinterval_cleanName();
+fxValue __declspec(dllexport) ljinterval_cleanDescription();
+fxValue __declspec(dllexport) ljdevice_stream_startName();
+fxValue __declspec(dllexport) ljdevice_stream_startDescription();
+fxValue __declspec(dllexport) ljdevice_stream_readName();
+fxValue __declspec(dllexport) ljdevice_stream_readDescription();
+fxValue __declspec(dllexport) ljdevice_stream_stopName();
+fxValue __declspec(dllexport) ljdevice_stream_stopDescription();
+fxValue __declspec(dllexport) ljdevice_stream_burstName();
+fxValue __declspec(dllexport) ljdevice_stream_burstDescription();
+fxValue __declspec(dllexport) ljdevice_last_errorName();
+fxValue __declspec(dllexport) ljdevice_last_errorDescription();
+
+}
